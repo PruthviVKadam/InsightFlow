@@ -1,0 +1,38 @@
+# R session data
+.Rhistory
+.RData
+.Rproj.user/
+.Ruserdata
+*.Rproj.bak
+
+# Generated SQLite database
+insightflow.db
+*.sqlite
+*.sqlite3
+
+# Generated / uploaded data (reproducible via scripts/generate_sample_data.R)
+data/raw/*
+data/clean/*
+data/sample/*
+!data/raw/.gitkeep
+!data/clean/.gitkeep
+!data/sample/.gitkeep
+
+# Generated report exports
+exports/*
+!exports/.gitkeep
+
+# Quarto / knitr build artifacts
+/.quarto/
+*_files/
+*.html
+*_cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment / secrets
+.env
+.env.*

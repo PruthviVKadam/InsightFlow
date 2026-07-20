@@ -1,0 +1,43 @@
+default:
+  app:
+    name: "InsightFlow"
+    version: "1.0.0"
+    tagline: "AI-Powered Business Performance & Forecasting Platform"
+  
+  database:
+    path: "insightflow.db"
+  
+  data:
+    sample_dir: "data/sample"
+    raw_dir: "data/raw"
+    clean_dir: "data/clean"
+    max_upload_mb: 50
+  
+  forecast:
+    default_horizon: 6
+    confidence_level: 0.95
+    train_split: 0.8
+    models:
+      - "ARIMA"
+      - "ETS"
+      - "XGBoost"
+  
+  segmentation:
+    default_k: 4
+    max_k: 10
+    method: "kmeans"
+  
+  anomaly:
+    zscore_threshold: 3.0
+    stl_multiplier: 2.0
+    isolation_ntrees: 100
+  
+  reports:
+    output_dir: "exports"
+    excel_template: "Executive_Summary.xlsx"
+    pdf_template: "reports/executive_report.qmd"
+  
+  theme:
+    default: "dark"
+    primary_color: "#6366f1"
+    accent_color: "#06b6d4"

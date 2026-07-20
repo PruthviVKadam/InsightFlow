@@ -1,0 +1,9 @@
+# Normalize line endings: text files stored as LF in the repo
+* text=auto eol=lf
+
+# Treat known binary types as binary
+*.xlsx binary
+*.db binary
+*.png binary
+*.jpg binary
+*.ico binary

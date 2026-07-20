@@ -1,0 +1,53 @@
+Package: InsightFlow
+Title: AI-Powered Business Performance and Forecasting Platform
+Version: 1.0.0
+Authors@R: person("InsightFlow", "Developer", role = c("aut", "cre"),
+                   email = "developer@insightflow.app")
+Description: A decision-support system that transforms raw business data into
+    forecasts, KPIs, automated reports, and actionable recommendations.
+    Built with R and Shiny for interactive business analytics.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports:
+    shiny,
+    bslib,
+    plotly,
+    DT,
+    shinyWidgets,
+    waiter,
+    htmltools,
+    thematic,
+    tidyverse,
+    dplyr,
+    tidyr,
+    ggplot2,
+    readr,
+    purrr,
+    stringr,
+    readxl,
+    janitor,
+    data.table,
+    lubridate,
+    scales,
+    RColorBrewer,
+    viridis,
+    DBI,
+    RSQLite,
+    forecast,
+    xgboost,
+    Metrics,
+    cluster,
+    factoextra,
+    solitude,
+    openxlsx2,
+    mschart,
+    quarto,
+    rmarkdown,
+    knitr,
+    kableExtra,
+    config,
+    yaml
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
