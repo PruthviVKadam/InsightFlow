@@ -36,3 +36,6 @@ desktop.ini
 # Environment / secrets
 .env
 .env.*
+
+# rsconnect deploy metadata (may reference account names)
+rsconnect/

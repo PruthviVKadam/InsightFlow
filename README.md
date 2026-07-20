@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Features
+## Features
 
 | Feature | Description |
 |:---|:---|
@@ -23,7 +23,7 @@
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 - **R** >= 4.2.0
 - **RStudio** (recommended) or any R IDE
@@ -31,12 +31,12 @@
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### 1. Clone or download the project
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/PruthviVKadam/InsightFlow.git
 cd InsightFlow
 ```
 
@@ -65,7 +65,7 @@ Creates realistic synthetic data in `data/sample/`:
 
 ---
 
-## 🎮 Running the Application
+## Running the Application
 
 ```r
 setwd("InsightFlow")
@@ -81,7 +81,7 @@ Or in RStudio, open `app.R` and click **Run App**.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 InsightFlow/
@@ -105,7 +105,7 @@ InsightFlow/
 │   ├── utils_insights.R           # Auto-generated text insights
 │   ├── utils_excel_export.R       # Styled Excel report builder
 │   └── utils_db.R                 # SQLite database helpers
-├── www/styles.css                 # Premium dark-theme CSS
+├── www/styles.css                 # Dark-theme CSS
 ├── reports/executive_report.qmd   # Quarto PDF template
 ├── scripts/generate_sample_data.R # Sample data generator
 ├── data/sample/                   # Demo datasets
@@ -117,7 +117,7 @@ InsightFlow/
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |:---|:---|
@@ -135,7 +135,7 @@ InsightFlow/
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ```r
 setwd("InsightFlow")
@@ -144,7 +144,7 @@ testthat::test_dir("tests/testthat")
 
 ---
 
-## 📊 Architecture
+## Architecture
 
 ```
 Excel Files (.xlsx)
@@ -191,7 +191,7 @@ Excel Files (.xlsx)
 
 ---
 
-## 📈 Skills Demonstrated
+## Skills Demonstrated
 
 - Statistical computing in R
 - Data wrangling and ETL pipelines
@@ -207,10 +207,10 @@ Excel Files (.xlsx)
 
 ---
 
-## 📝 License
+## License
 
 MIT License
 
 ---
 
-*Built with ❤️ using R and Shiny*
+Built with R and Shiny.
