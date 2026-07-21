@@ -99,6 +99,10 @@ sales <- data.frame(
   stringsAsFactors = FALSE
 )
 
+# Baseline revenue (before quality-issue injection) — used below to size
+# operating expenses to a realistic margin instead of an arbitrary range.
+revenue_total <- sum(sales$total, na.rm = TRUE)
+
 # Inject some data quality issues for cleaning demos
 sales$date[sample(1:n_sales, 5)]   <- NA
 sales$total[sample(1:n_sales, 8)]  <- NA
@@ -149,12 +153,25 @@ departments <- c("Sales", "Engineering", "Marketing", "Operations", "HR",
 exp_dates <- sample(seq(start_date, end_date, by = "day"), 500, replace = TRUE)
 exp_dates <- sort(exp_dates)
 
+exp_category <- sample(expense_categories, 500, replace = TRUE,
+                       prob = c(0.18, 0.15, 0.22, 0.10, 0.08, 0.06,
+                                0.05, 0.07, 0.04, 0.05))
+
+# Give each category a plausible relative weight (salaries and rent heaviest),
+# then scale the whole vector so total operating expenses land at ~72% of
+# revenue — a healthy, believable ~28% margin rather than a runaway loss.
+raw_amount <- runif(500, 100, 4000)
+raw_amount[exp_category == "Salaries"] <- runif(sum(exp_category == "Salaries"),
+                                                3000, 9000)
+raw_amount[exp_category == "Rent"]     <- 4000
+
+target_expense_total <- revenue_total * 0.72
+amount <- round(raw_amount * (target_expense_total / sum(raw_amount)), 2)
+
 expenses <- data.frame(
   date        = format(exp_dates, "%Y-%m-%d"),
-  category    = sample(expense_categories, 500, replace = TRUE,
-                        prob = c(0.18, 0.15, 0.22, 0.10, 0.08, 0.06,
-                                 0.05, 0.07, 0.04, 0.05)),
-  amount      = round(runif(500, 100, 15000), 2),
+  category    = exp_category,
+  amount      = amount,
   description = paste("Expense for",
                        sample(c("Q1 campaign", "office supplies", "cloud hosting",
                                 "team event", "contractor", "software license",
@@ -164,14 +181,6 @@ expenses <- data.frame(
   department  = sample(departments, 500, replace = TRUE),
   stringsAsFactors = FALSE
 )
-
-# Make salaries higher
-salary_idx <- which(expenses$category == "Salaries")
-expenses$amount[salary_idx] <- round(runif(length(salary_idx), 4000, 15000), 2)
-
-# Make rent consistent monthly
-rent_idx <- which(expenses$category == "Rent")
-expenses$amount[rent_idx] <- 8500
 
 wb_exp <- wb_workbook()$
   add_worksheet("Expenses")$
