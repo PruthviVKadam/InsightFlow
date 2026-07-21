@@ -8,6 +8,18 @@
 
 ![InsightFlow walkthrough — KPI dashboard, sales analysis, customer segmentation, multi-model forecasting, inventory, and anomaly detection](docs/demo.gif)
 
+## At a glance
+
+| | |
+|:---|:---|
+| **Live app** | [pruthvivkadam.shinyapps.io/insightflow](https://pruthvivkadam.shinyapps.io/insightflow/) — opens pre-seeded with sample data |
+| **Tests** | 70 unit tests passing, 0 failures (cleaning, KPI, forecasting) |
+| **Architecture** | 10 Shiny feature modules + 8 utility modules over a SQLite backend |
+| **Forecasting** | ARIMA, ETS, XGBoost — auto-selected by held-out MAPE/RMSE |
+| **Segmentation** | RFM + K-Means with business-labeled segments |
+| **Anomaly detection** | Z-Score, STL decomposition, Isolation Forest |
+| **Sample dataset** | 1,995 sales · 50 inventory · 500 expenses · 500 customers |
+
 ---
 
 ## Features
