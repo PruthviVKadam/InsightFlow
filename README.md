@@ -6,6 +6,8 @@
 
 **Live demo:** [pruthvivkadam.shinyapps.io/insightflow](https://pruthvivkadam.shinyapps.io/insightflow/) — opens pre-loaded with sample data.
 
+![InsightFlow walkthrough — KPI dashboard, sales analysis, customer segmentation, multi-model forecasting, inventory, and anomaly detection](docs/demo.gif)
+
 ---
 
 ## Features
