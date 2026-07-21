@@ -4,6 +4,8 @@
 
 > A decision-support system that transforms raw business data into forecasts, KPIs, automated reports, and actionable recommendations.
 
+**Live demo:** [pruthvivkadam.shinyapps.io/insightflow](https://pruthvivkadam.shinyapps.io/insightflow/) — opens pre-loaded with sample data.
+
 ---
 
 ## Features
