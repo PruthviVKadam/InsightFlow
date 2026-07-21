@@ -154,6 +154,15 @@ server <- function(input, output, session) {
   db_path <- cfg$database$path
   con <- init_db(db_path)
 
+  # Seed the bundled sample data on first launch so the app opens populated.
+  # Only runs when every table is empty, so it never overwrites uploaded data.
+  if (all(get_table_counts(con) == 0)) {
+    tryCatch(
+      seed_sample_data(con),
+      error = function(e) message("Sample-data seeding skipped: ", e$message)
+    )
+  }
+
   # Close connection when app stops
 
   shiny::onStop(function() {

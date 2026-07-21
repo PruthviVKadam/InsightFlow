@@ -210,5 +210,36 @@ clear_database <- function(con) {
   }
 }
 
+#' Load bundled sample data into the database
+#'
+#' Reads the sample .xlsx files, cleans them through the same
+#' auto_detect_and_clean() pipeline the upload module uses, and writes them to
+#' the database. Intended for first-launch seeding so the app opens populated.
+#'
+#' @param con DBI connection
+#' @param sample_dir Directory holding the sample .xlsx files
+#' @return Named numeric vector of rows written per table (invisibly)
+seed_sample_data <- function(con, sample_dir = file.path("data", "sample")) {
+  sample_files <- c("Sales.xlsx", "Inventory.xlsx",
+                    "Expenses.xlsx", "Customers.xlsx")
+  written <- c(sales = 0, inventory = 0, expenses = 0, customers = 0)
+
+  for (fname in sample_files) {
+    fpath <- file.path(sample_dir, fname)
+    if (!file.exists(fpath)) next
+
+    df <- tryCatch(readxl::read_excel(fpath, sheet = 1),
+                   error = function(e) NULL)
+    if (is.null(df)) next
+
+    result <- auto_detect_and_clean(as.data.frame(df), fname)
+    if (result$type != "unknown") {
+      written[[result$type]] <- write_clean_data(con, result$data, result$type)
+    }
+  }
+
+  invisible(written)
+}
+
 #' Null-coalescing operator
 `%||%` <- function(a, b) if (!is.null(a) && !is.na(a)) a else b
